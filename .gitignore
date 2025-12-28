@@ -1,0 +1,15 @@
+# data catalog
+data
+
+# cache / notebooki
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# venv
+.venv/
+.env
+
+# OS/IDE
+.DS_Store
+.vscode/

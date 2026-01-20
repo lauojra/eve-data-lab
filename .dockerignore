@@ -1,0 +1,13 @@
+# Do not send raw/processed data
+data/
+
+# Python noise
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Git/IDE
+.git/
+.vscode/
+.idea/

@@ -36,13 +36,11 @@ def merge_clean_to_parquet(
     """
     ensure_dirs()
 
-    # Expand the wildcard ourselves (reliable on Windows mounts / Docker)
+    # Get all CSV file paths
     csv_paths = glob.glob(str(INTERIM_DIR / "*.csv"))
     print(f">>> CSV files found: {len(csv_paths)}")
     if not csv_paths:
         raise FileNotFoundError(f"No CSV files found in {INTERIM_DIR}")
-
-    print(">>> Example CSV:", csv_paths[:3])
 
     out_dir = PROCESSED_DIR / out_subdir
     out_dir.mkdir(parents=True, exist_ok=True)

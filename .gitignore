@@ -1,5 +1,7 @@
-# data catalog
+# ignore dev catalogs
 data
+reports
+notebooks
 
 # cache / notebooki
 .ipynb_checkpoints/

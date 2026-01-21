@@ -1,5 +1,7 @@
-# Do not send raw/processed data
+# Data catalog
 data/
+reports/
+notebooks/
 
 # Python noise
 __pycache__/

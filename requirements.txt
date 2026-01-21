@@ -1,2 +1,5 @@
 requests
 beautifulsoup4
+matplotlib
+pandas
+pyspark==3.5.3

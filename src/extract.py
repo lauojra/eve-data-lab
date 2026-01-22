@@ -43,8 +43,6 @@ def decompress_file(input_path: Path) -> Path:
     output_name = _strip_known_compression_suffix(input_path.name)
     output_path = INTERIM_DIR / output_name
 
-    print(f">>> Decompressing: {input_path.name} -> {output_path.name}")
-
     # Select the correct decompression method
     opener = gzip.open if suffix == ".gz" else bz2.open
 

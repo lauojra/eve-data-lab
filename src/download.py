@@ -34,11 +34,9 @@ def _list_year_files(year: int) -> list[str]:
     for a in soup.find_all("a", href=True):
         href = a["href"]
 
-        # Filter only files we care about
         if not href.endswith((".csv.gz", ".csv.bz2", ".gz", ".bz2")):
             continue
 
-        # This safely builds a correct absolute URL
         full_url = urljoin(base_url, href)
         file_urls.append(full_url)
 
@@ -60,6 +58,7 @@ def download_market_history_years(years: Iterable[int], overwrite: bool = False)
         downloaded: list[Path] = []
         skipped = 0
 
+        print(f">>> Downloading: {len(urls)} files for year {year}")
         for file_url in urls:
             filename = file_url.split("/")[-1]
             out_path = RAW_DIR / filename
@@ -67,8 +66,7 @@ def download_market_history_years(years: Iterable[int], overwrite: bool = False)
             if out_path.exists() and not overwrite:
                 skipped += 1
                 continue
-
-            print(f">>> Downloading: {filename}")
+            
             with requests.get(file_url, stream=True, timeout=120) as resp:
                 resp.raise_for_status()
                 out_path.parent.mkdir(parents=True, exist_ok=True)

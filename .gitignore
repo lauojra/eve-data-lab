@@ -2,6 +2,7 @@
 data
 reports
 notebooks
+models
 
 # cache / notebooki
 .ipynb_checkpoints/

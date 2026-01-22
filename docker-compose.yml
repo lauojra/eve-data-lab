@@ -1,0 +1,18 @@
+services:
+  eve-pipeline:
+    image: eve-data-lab
+    container_name: eve_data_pipeline
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      bash -lc "
+      echo '=== EVE DATA PIPELINE START ===' &&
+      python main.py download --years 2025 &&
+      python main.py extract &&
+      python main.py transform &&
+      echo '=== PIPELINE FINISHED ==='
+      "
